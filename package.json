@@ -1,0 +1,13 @@
+{
+  "name": "serlina-plugins",
+  "scripts": {
+    "clean": "lerna clean",
+    "bootstrap": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "lerna": "^3.0.4"
+  },
+  "description": "A set of Serlina plugins",
+  "version": "1.0.0",
+  "main": "index.js"
+}

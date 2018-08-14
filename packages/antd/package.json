@@ -1,0 +1,40 @@
+{
+  "name": "serlina-plugin-antd",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "example": "serlina-serve dev example"
+  },
+  "files": [
+    "index.js",
+    "withAntd.js"
+  ],
+  "dependencies": {
+    "babel-plugin-import": "^1.8.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0"
+  },
+  "peerDependencies": {
+    "antd": "^3"
+  },
+  "devDependencies": {
+    "antd": "^3.8.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "serlina-serve": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serlina-community/serlina-plugins.git"
+  },
+  "keywords": [
+    "serlina",
+    "antd"
+  ],
+  "author": "Randy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serlina-community/serlina-plugins/issues"
+  },
+  "homepage": "https://github.com/serlina-community/serlina-plugins#readme"
+}
