@@ -32,9 +32,6 @@ const webpackConfig = options => (webpack, { miniCSSLoader }) => {
 }
 
 module.exports = (config, options = {}) => {
-  console.log(Object.assign({
-    webpack: webpackConfig(options)
-  }, config))
   return Object.assign({
     webpack: webpackConfig(options)
   }, config)
