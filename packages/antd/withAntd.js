@@ -33,6 +33,7 @@ const webpackConfig = options => (webpack, { miniCSSLoader }) => {
 
 module.exports = (config, options = {}) => {
   return Object.assign({
-    webpack: webpackConfig(options)
+    webpack: webpackConfig(options),
+    nodeExternalsWhitelist: [/antd\/lib\/.*\/style/]
   }, config)
 }
