@@ -32,7 +32,7 @@ const webpackConfig = (options, childWebpackConfig) => (webpack, serlinaConfigOp
   }, childWebpackConfig ? childWebpackConfig(webpack, serlinaConfigOptions) : {})
 }
 
-module.exports = (config, options = {}) => {
+module.exports = (config = {}, options = {}) => {
   const childWebpackConfig = config.webpack
   delete config.webpack
   return Object.assign({
