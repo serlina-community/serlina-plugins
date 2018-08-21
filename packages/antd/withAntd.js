@@ -1,5 +1,6 @@
-const webpackConfig = options => (webpack, { miniCSSLoader }) => {
-  return {
+const webpackConfig = (options, childWebpackConfig) => (webpack, serlinaConfigOptions) => {
+  const { miniCSSLoader, merge } = serlinaConfigOptions
+  return merge({
     module: {
       rules: [
         {
@@ -14,7 +15,7 @@ const webpackConfig = options => (webpack, { miniCSSLoader }) => {
             }
           }]
         },
-        { 
+        {
           test: /\.js$/,
           exclude: /(node_modules)/,
           use: {
@@ -28,12 +29,14 @@ const webpackConfig = options => (webpack, { miniCSSLoader }) => {
         }
       ]
     }
-  }
+  }, childWebpackConfig ? childWebpackConfig(webpack, serlinaConfigOptions) : {})
 }
 
 module.exports = (config, options = {}) => {
+  const childWebpackConfig = config.webpack
+  delete config.webpack
   return Object.assign({
-    webpack: webpackConfig(options),
+    webpack: webpackConfig(options, childWebpackConfig),
     nodeExternalsWhitelist: [/antd\/lib\/.*\/style/]
   }, config)
 }
