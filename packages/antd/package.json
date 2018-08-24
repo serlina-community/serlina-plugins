@@ -1,13 +1,14 @@
 {
   "name": "serlina-plugin-antd",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.js",
   "scripts": {
     "example": "serlina-serve dev example"
   },
   "files": [
     "index.js",
-    "withAntd.js"
+    "withAntd.js",
+    "withTSAntd"
   ],
   "dependencies": {
     "babel-plugin-import": "^1.8.0",
