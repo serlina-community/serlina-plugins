@@ -22,7 +22,7 @@ const webpackConfig = (options, childWebpackConfig) => (webpack, serlinaConfigOp
             loader: 'babel-loader',
             options: {
               plugins: [
-                ["import", { "style": true, libraryName: 'antd' }]
+                [require.resolve('babel-plugin-import'), { "style": true, libraryName: 'antd' }]
               ]
             }
           }

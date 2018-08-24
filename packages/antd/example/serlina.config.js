@@ -1,3 +1,3 @@
-const withAntd = require('../')
+const { withTSAntd } = require('../')
 
-module.exports = withAntd()
+module.exports = withTSAntd()

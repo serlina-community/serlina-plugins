@@ -1,5 +1,10 @@
 # serlina-plugin-antd
 
+Delightful using Ant.Design in Serlina.
+
+✅ Support `babel-plugin-import`
+✅ Support TypeScript
+
 ## Usage
 
 ```
@@ -27,6 +32,18 @@ module.exports = withAntd({ /** your config */ }, {
 
 - babel-plugin-import
 - less
+
+### Use with TypeScript
+
+Place your `tsconfig.json` under `baseDir`.
+
+```js
+const { withTSAntd } = requrie('serlina-plugin-antd')
+
+module.exports = withTSAntd()
+```
+
+`withTSAntd` use Babel to tranform. So you can use `target: "es6"`.
 
 # License
 
