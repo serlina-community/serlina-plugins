@@ -35,6 +35,10 @@ module.exports = withAntd({ /** your config */ }, {
 
 ### Use with TypeScript
 
+```
+npm i typescript @types/react
+```
+
 Place your `tsconfig.json` under `baseDir`.
 
 ```js
