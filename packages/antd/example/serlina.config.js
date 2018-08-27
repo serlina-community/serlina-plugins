@@ -1,3 +1,9 @@
 const { withTSAntd } = require('../')
 
-module.exports = withTSAntd()
+module.exports = withTSAntd({
+  
+}, {
+  modifyVars: {
+    'primary-color': '#000'
+  }
+})

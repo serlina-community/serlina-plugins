@@ -1,9 +1,9 @@
 const path = require('path')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 
-const webpackConfig = env => (options, childWebpackConfig) => (webpack, serlinaConfigOptions) => {
-  const { miniCSSLoader, merge, baseDir } = serlinaConfigOptions
-  const isClient = env === 'client'
+const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOptions) => {
+  const { miniCSSLoader, merge, baseDir, compileEnv } = serlinaConfigOptions
+  const isClient = compileEnv === 'client'
 
   return merge({
     module: {
@@ -51,17 +51,14 @@ const webpackConfig = env => (options, childWebpackConfig) => (webpack, serlinaC
     plugins: [
       new CheckerPlugin()
     ]
-  }, childWebpackConfig ? childWebpackConfig(webpack, serlinaConfigOptions) : {})
+  }, originConfig ? originConfig(webpack, serlinaConfigOptions) : {})
 }
 
 module.exports = (config = {}, options = {}) => {
-  const childWebpackConfig = config.webpack
-  delete config.webpack
-  return Object.assign({
-    webpack: {
-      client: webpackConfig('client')(options, childWebpackConfig),
-      server: webpackConfig('server')(options, childWebpackConfig)
-    },
-    nodeExternalsWhitelist: [/antd\/lib\/.*\/style/]
-  }, config)
+  const { webpack, nodeExternalsWhitelist } = config
+
+  return {
+    webpack: makeWebpackConfig(options, webpack),
+    nodeExternalsWhitelist: [/antd\/lib\/.*\/style/].concat(nodeExternalsWhitelist)
+  }
 }
