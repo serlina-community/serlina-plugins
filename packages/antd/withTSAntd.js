@@ -6,10 +6,10 @@ const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOpti
   const isClient = compileEnv === 'client'
 
   return merge({
+    resolve: {
+      extensions: ['.js', '.ts', '.tsx']
+    },
     module: {
-      resolve: {
-        extensions: ['.js', '.ts', '.tsx']
-      },
       rules: [
         {
           test: /\.less$/,
