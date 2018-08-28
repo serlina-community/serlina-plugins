@@ -7,6 +7,9 @@ const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOpti
 
   return merge({
     module: {
+      resolve: {
+        extensions: ['.js', '.ts', '.tsx']
+      },
       rules: [
         {
           test: /\.less$/,
