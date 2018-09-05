@@ -2,7 +2,7 @@ const path = require('path')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 
 const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOptions) => {
-  const { miniCSSLoader, merge, baseDir, compileEnv } = serlinaConfigOptions
+  const { miniCSSLoader, merge, baseDir, compileEnv, SerlinaHotLoader, ReactHotLoader } = serlinaConfigOptions
   const isClient = compileEnv === 'client'
 
   return merge({
@@ -26,7 +26,12 @@ const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOpti
         {
           test: /\.tsx?$/,
           exclude: /(node_modules)/,
-          use: [{
+          use: [
+            isClient && { loader: SerlinaHotLoader, options: {
+              baseDir
+            } }
+          ].filter(Boolean).concat([
+            {
             loader: 'awesome-typescript-loader',
             options: {
               transpileOnly: !isClient,
@@ -36,7 +41,10 @@ const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOpti
               configFileName: path.resolve(baseDir, './tsconfig.json'),
               babelOptions: {
                 ignore: /node_modules/,
-                presets: [require.resolve('babel-preset-es2015'), require.resolve('babel-preset-stage-2')]
+                presets: [require.resolve('babel-preset-es2015'), require.resolve('babel-preset-stage-2')],
+                plugins: [
+                  ReactHotLoader
+                ]
               }
             }
           }, {
@@ -47,7 +55,7 @@ const makeWebpackConfig = (options, originConfig) => (webpack, serlinaConfigOpti
               camel2: '-',
               style: 'style'
             }
-          },]
+          }])
         }
       ]
     },

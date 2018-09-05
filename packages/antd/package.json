@@ -1,6 +1,6 @@
 {
   "name": "serlina-plugin-antd",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "main": "index.js",
   "scripts": {
     "example": "serlina-serve dev example"
